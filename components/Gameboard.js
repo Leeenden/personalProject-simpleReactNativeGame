@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Text} from "react-native";
+import { View, StyleSheet, Text, ShadowPropTypesIOS} from "react-native";
 import Square from './Square';
+import { connect } from "react-redux";
 
-
-const Gameboard = () => {
-    let time = 10
-    const [timeLeft, setTimeLeft] = useState(time)
+const Gameboard = (props) => {
+    const [timeLeft, setTimeLeft] = useState(10)
 
     useEffect(() => {
         if(!timeLeft) return
@@ -19,20 +18,21 @@ const Gameboard = () => {
   return (
     <View style={styles.container}>
       <Text>Welcome to leeendens whack-a-mole app.</Text>
-      <Text>{timeLeft}</Text>
+      <Text>You have {timeLeft} second remaining.</Text>
+      <Text>{props.score} Moles whacked!</Text>
       <View style={styles.game}>
-        <Square time={time}></Square>
-        <Square time={time}></Square>
-        <Square time={time}></Square>
-        <Square time={time}></Square>
-        <Square time={time}></Square>
-        <Square time={time}></Square>
-        <Square time={time}></Square>
-        <Square time={time}></Square>
-        <Square time={time}></Square>
-        <Square time={time}></Square>
-        <Square time={time}></Square>
-        <Square time={time}></Square>
+        <Square></Square>
+        <Square></Square>
+        <Square></Square>
+        <Square></Square>
+        <Square></Square>
+        <Square></Square>
+        <Square></Square>
+        <Square></Square>
+        <Square></Square>
+        <Square></Square>
+        <Square></Square>
+        <Square></Square>
       </View>
     </View>
   )
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: '#fff',
       alignItems: 'center',
-      justifyContent: 'center',
+      marginTop: 100,
     },
     game: {
       flexDirection: "row",
@@ -53,5 +53,10 @@ const styles = StyleSheet.create({
     }
   });
   
+  const mapStateToProps = state => {
+    return {
+      score: state.score
+    }
+}
 
-export default Gameboard
+export default connect(mapStateToProps)(Gameboard)
