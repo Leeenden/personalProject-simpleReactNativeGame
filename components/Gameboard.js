@@ -4,7 +4,7 @@ import Square from './Square';
 import { connect } from "react-redux";
 
 const Gameboard = (props) => {
-    const [timeLeft, setTimeLeft] = useState(10)
+    const [timeLeft, setTimeLeft] = useState(60)
 
     useEffect(() => {
         if(!timeLeft) return

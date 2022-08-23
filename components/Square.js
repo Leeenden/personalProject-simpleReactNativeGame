@@ -17,9 +17,9 @@ const Square = (props) => {
             setMoleActive(true)
             setTimeout(() => {
                 setMoleActive(false)
-            }, 800)
+            }, 1000)
         }, randomTime)
-        setTimeout(endGame, 10 * 1000)
+        setTimeout(endGame, 60 * 20000)
     }, [])
     
     function endGame () {
